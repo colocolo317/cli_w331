@@ -37,6 +37,7 @@ toolchain_settings:
 component:
 - {from: wiseconnect3_sdk, id: SIWG917M111MGTBA}
 - {from: wiseconnect3_sdk, id: basic_network_config_manager}
+- {from: wiseconnect3_sdk, id: ble}
 - {from: wiseconnect3_sdk, id: brd4338a}
 - {from: wiseconnect3_sdk, id: console}
 - {from: wiseconnect3_sdk, id: console_variables}

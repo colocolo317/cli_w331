@@ -2,42 +2,42 @@
 <project name="uc.module.setup.componentSetup.com.silabs.ss.framework.project.toolchain.core.default#com.silabs.ss.tool.ide.arm.toolchain.gnu.cdt:12.2.1.20221205.gcc" propertyScope="project">
   <folder name="console_commands">
     <folder name="src">
-      <file name="console_argument_types.c" linked="false" uri="studio:/sdk/extension/wiseconnect/examples/snippets/cli_demo/console_commands/src/console_argument_types.c"/>
-      <file name="console_command_database.c" linked="false" uri="studio:/sdk/extension/wiseconnect/examples/snippets/cli_demo/console_commands/src/console_command_database.c"/>
-      <file name="console_variable_database.c" linked="false" uri="studio:/sdk/extension/wiseconnect/examples/snippets/cli_demo/console_commands/src/console_variable_database.c"/>
+      <file name="console_argument_types.c" linked="false" uri="studio:/project/console_commands/src/console_argument_types.c"/>
+      <file name="console_command_database.c" linked="false" uri="studio:/project/console_commands/src/console_command_database.c"/>
+      <file name="console_variable_database.c" linked="false" uri="studio:/project/console_commands/src/console_variable_database.c"/>
     </folder>
     <folder name="inc">
-      <file name="console_argument_types.h" linked="false" uri="studio:/sdk/extension/wiseconnect/examples/snippets/cli_demo/console_commands/inc/console_argument_types.h"/>
+      <file name="console_argument_types.h" linked="false" uri="studio:/project/console_commands/inc/console_argument_types.h"/>
     </folder>
   </folder>
   <folder name="resources">
     <folder name="readme">
-      <file name="cli_setup.png" linked="false" uri="studio:/sdk/extension/wiseconnect/examples/snippets/cli_demo/resources/readme/cli_setup.png"/>
-      <file name="cli_station.png" linked="false" uri="studio:/sdk/extension/wiseconnect/examples/snippets/cli_demo/resources/readme/cli_station.png"/>
-      <file name="clidemo_soc_ncp.png" linked="false" uri="studio:/sdk/extension/wiseconnect/examples/snippets/cli_demo/resources/readme/clidemo_soc_ncp.png"/>
-      <file name="build_output.png" linked="false" uri="studio:/sdk/extension/wiseconnect/examples/snippets/cli_demo/resources/readme/build_output.png"/>
-      <file name="help.png" linked="false" uri="studio:/sdk/extension/wiseconnect/examples/snippets/cli_demo/resources/readme/help.png"/>
-      <file name="prints.png" linked="false" uri="studio:/sdk/extension/wiseconnect/examples/snippets/cli_demo/resources/readme/prints.png"/>
-      <file name="prints7.png" linked="false" uri="studio:/sdk/extension/wiseconnect/examples/snippets/cli_demo/resources/readme/prints7.png"/>
-      <file name="empty_data.png" linked="false" uri="studio:/sdk/extension/wiseconnect/examples/snippets/cli_demo/resources/readme/empty_data.png"/>
-      <file name="tx_commands.png" linked="false" uri="studio:/sdk/extension/wiseconnect/examples/snippets/cli_demo/resources/readme/tx_commands.png"/>
-      <file name="tx_modes.png" linked="false" uri="studio:/sdk/extension/wiseconnect/examples/snippets/cli_demo/resources/readme/tx_modes.png"/>
-      <file name="rx_stats.png" linked="false" uri="studio:/sdk/extension/wiseconnect/examples/snippets/cli_demo/resources/readme/rx_stats.png"/>
-      <file name="rx_stats_prints.png" linked="false" uri="studio:/sdk/extension/wiseconnect/examples/snippets/cli_demo/resources/readme/rx_stats_prints.png"/>
-      <file name="wifi_init.png" linked="false" uri="studio:/sdk/extension/wiseconnect/examples/snippets/cli_demo/resources/readme/wifi_init.png"/>
-      <file name="wifi_init_prints.png" linked="false" uri="studio:/sdk/extension/wiseconnect/examples/snippets/cli_demo/resources/readme/wifi_init_prints.png"/>
-      <file name="scan_prints.png" linked="false" uri="studio:/sdk/extension/wiseconnect/examples/snippets/cli_demo/resources/readme/scan_prints.png"/>
-      <file name="wifi_connect.png" linked="false" uri="studio:/sdk/extension/wiseconnect/examples/snippets/cli_demo/resources/readme/wifi_connect.png"/>
-      <file name="connect.png" linked="false" uri="studio:/sdk/extension/wiseconnect/examples/snippets/cli_demo/resources/readme/connect.png"/>
-      <file name="deinit.png" linked="false" uri="studio:/sdk/extension/wiseconnect/examples/snippets/cli_demo/resources/readme/deinit.png"/>
-      <file name="picture1.png" linked="false" uri="studio:/sdk/extension/wiseconnect/examples/snippets/cli_demo/resources/readme/picture1.png"/>
-      <file name="picture2.png" linked="false" uri="studio:/sdk/extension/wiseconnect/examples/snippets/cli_demo/resources/readme/picture2.png"/>
-      <file name="picture4.png" linked="false" uri="studio:/sdk/extension/wiseconnect/examples/snippets/cli_demo/resources/readme/picture4.png"/>
-      <file name="picture8.png" linked="false" uri="studio:/sdk/extension/wiseconnect/examples/snippets/cli_demo/resources/readme/picture8.png"/>
-      <file name="picture9.png" linked="false" uri="studio:/sdk/extension/wiseconnect/examples/snippets/cli_demo/resources/readme/picture9.png"/>
-      <file name="picture10.png" linked="false" uri="studio:/sdk/extension/wiseconnect/examples/snippets/cli_demo/resources/readme/picture10.png"/>
-      <file name="picture5.png" linked="false" uri="studio:/sdk/extension/wiseconnect/examples/snippets/cli_demo/resources/readme/picture5.png"/>
-      <file name="picture6.png" linked="false" uri="studio:/sdk/extension/wiseconnect/examples/snippets/cli_demo/resources/readme/picture6.png"/>
+      <file name="cli_setup.png" linked="false" uri="studio:/project/resources/readme/cli_setup.png"/>
+      <file name="cli_station.png" linked="false" uri="studio:/project/resources/readme/cli_station.png"/>
+      <file name="clidemo_soc_ncp.png" linked="false" uri="studio:/project/resources/readme/clidemo_soc_ncp.png"/>
+      <file name="build_output.png" linked="false" uri="studio:/project/resources/readme/build_output.png"/>
+      <file name="help.png" linked="false" uri="studio:/project/resources/readme/help.png"/>
+      <file name="prints.png" linked="false" uri="studio:/project/resources/readme/prints.png"/>
+      <file name="prints7.png" linked="false" uri="studio:/project/resources/readme/prints7.png"/>
+      <file name="empty_data.png" linked="false" uri="studio:/project/resources/readme/empty_data.png"/>
+      <file name="tx_commands.png" linked="false" uri="studio:/project/resources/readme/tx_commands.png"/>
+      <file name="tx_modes.png" linked="false" uri="studio:/project/resources/readme/tx_modes.png"/>
+      <file name="rx_stats.png" linked="false" uri="studio:/project/resources/readme/rx_stats.png"/>
+      <file name="rx_stats_prints.png" linked="false" uri="studio:/project/resources/readme/rx_stats_prints.png"/>
+      <file name="wifi_init.png" linked="false" uri="studio:/project/resources/readme/wifi_init.png"/>
+      <file name="wifi_init_prints.png" linked="false" uri="studio:/project/resources/readme/wifi_init_prints.png"/>
+      <file name="scan_prints.png" linked="false" uri="studio:/project/resources/readme/scan_prints.png"/>
+      <file name="wifi_connect.png" linked="false" uri="studio:/project/resources/readme/wifi_connect.png"/>
+      <file name="connect.png" linked="false" uri="studio:/project/resources/readme/connect.png"/>
+      <file name="deinit.png" linked="false" uri="studio:/project/resources/readme/deinit.png"/>
+      <file name="picture1.png" linked="false" uri="studio:/project/resources/readme/picture1.png"/>
+      <file name="picture2.png" linked="false" uri="studio:/project/resources/readme/picture2.png"/>
+      <file name="picture4.png" linked="false" uri="studio:/project/resources/readme/picture4.png"/>
+      <file name="picture8.png" linked="false" uri="studio:/project/resources/readme/picture8.png"/>
+      <file name="picture9.png" linked="false" uri="studio:/project/resources/readme/picture9.png"/>
+      <file name="picture10.png" linked="false" uri="studio:/project/resources/readme/picture10.png"/>
+      <file name="picture5.png" linked="false" uri="studio:/project/resources/readme/picture5.png"/>
+      <file name="picture6.png" linked="false" uri="studio:/project/resources/readme/picture6.png"/>
     </folder>
   </folder>
   <folder name="wiseconnect3_sdk_3.3.1">
@@ -235,6 +235,30 @@
               </folder>
             </folder>
             <folder name="wireless">
+              <folder name="ble">
+                <folder name="src">
+                  <file name="rsi_ble_gap_apis.c" uri="studio:/sdk/extension/wiseconnect/components/device/silabs/si91x/wireless/ble/src/rsi_ble_gap_apis.c"/>
+                  <file name="rsi_ble_gatt_apis.c" uri="studio:/sdk/extension/wiseconnect/components/device/silabs/si91x/wireless/ble/src/rsi_ble_gatt_apis.c"/>
+                  <file name="rsi_bt_common_apis.c" uri="studio:/sdk/extension/wiseconnect/components/device/silabs/si91x/wireless/ble/src/rsi_bt_common_apis.c"/>
+                  <file name="rsi_bt_ble.c" uri="studio:/sdk/extension/wiseconnect/components/device/silabs/si91x/wireless/ble/src/rsi_bt_ble.c"/>
+                  <file name="rsi_common_apis.c" uri="studio:/sdk/extension/wiseconnect/components/device/silabs/si91x/wireless/ble/src/rsi_common_apis.c"/>
+                  <file name="rsi_utils.c" uri="studio:/sdk/extension/wiseconnect/components/device/silabs/si91x/wireless/ble/src/rsi_utils.c"/>
+                  <file name="sl_si91x_ble.c" uri="studio:/sdk/extension/wiseconnect/components/device/silabs/si91x/wireless/ble/src/sl_si91x_ble.c"/>
+                </folder>
+                <folder name="inc">
+                  <file name="rsi_ble_apis.h" uri="studio:/sdk/extension/wiseconnect/components/device/silabs/si91x/wireless/ble/inc/rsi_ble_apis.h"/>
+                  <file name="rsi_ble_common_config.h" uri="studio:/sdk/extension/wiseconnect/components/device/silabs/si91x/wireless/ble/inc/rsi_ble_common_config.h"/>
+                  <file name="rsi_ble.h" uri="studio:/sdk/extension/wiseconnect/components/device/silabs/si91x/wireless/ble/inc/rsi_ble.h"/>
+                  <file name="rsi_bt_common_apis.h" uri="studio:/sdk/extension/wiseconnect/components/device/silabs/si91x/wireless/ble/inc/rsi_bt_common_apis.h"/>
+                  <file name="rsi_bt_common_config.h" uri="studio:/sdk/extension/wiseconnect/components/device/silabs/si91x/wireless/ble/inc/rsi_bt_common_config.h"/>
+                  <file name="rsi_bt_common.h" uri="studio:/sdk/extension/wiseconnect/components/device/silabs/si91x/wireless/ble/inc/rsi_bt_common.h"/>
+                  <file name="rsi_common_apis.h" uri="studio:/sdk/extension/wiseconnect/components/device/silabs/si91x/wireless/ble/inc/rsi_common_apis.h"/>
+                  <file name="rsi_common.h" uri="studio:/sdk/extension/wiseconnect/components/device/silabs/si91x/wireless/ble/inc/rsi_common.h"/>
+                  <file name="rsi_user.h" uri="studio:/sdk/extension/wiseconnect/components/device/silabs/si91x/wireless/ble/inc/rsi_user.h"/>
+                  <file name="rsi_utils.h" uri="studio:/sdk/extension/wiseconnect/components/device/silabs/si91x/wireless/ble/inc/rsi_utils.h"/>
+                  <file name="sl_si91x_ble.h" uri="studio:/sdk/extension/wiseconnect/components/device/silabs/si91x/wireless/ble/inc/sl_si91x_ble.h"/>
+                </folder>
+              </folder>
               <folder name="memory">
                 <file name="malloc_buffers.c" uri="studio:/sdk/extension/wiseconnect/components/device/silabs/si91x/wireless/memory/malloc_buffers.c"/>
               </folder>
@@ -597,16 +621,17 @@
       </folder>
     </folder>
   </folder>
-  <file name="demo.c" linked="false" uri="studio:/sdk/extension/wiseconnect/examples/snippets/cli_demo/demo.c"/>
-  <file name="main.c" linked="false" uri="studio:/sdk/extension/wiseconnect/examples/snippets/cli_demo/main.c"/>
-  <file name="wifi_commands.c" linked="false" uri="studio:/sdk/extension/wiseconnect/examples/snippets/cli_demo/wifi_commands.c"/>
-  <file name="network_commands.c" linked="false" uri="studio:/sdk/extension/wiseconnect/examples/snippets/cli_demo/network_commands.c"/>
-  <file name="bsd_socket_commands.c" linked="false" uri="studio:/sdk/extension/wiseconnect/examples/snippets/cli_demo/bsd_socket_commands.c"/>
-  <file name="iot_socket_commands.c" linked="false" uri="studio:/sdk/extension/wiseconnect/examples/snippets/cli_demo/iot_socket_commands.c"/>
-  <file name="app.h" linked="false" uri="studio:/sdk/extension/wiseconnect/examples/snippets/cli_demo/app.h"/>
-  <file name="readme.md" linked="false" uri="studio:/sdk/extension/wiseconnect/examples/snippets/cli_demo/readme.md"/>
+  <file name="demo.c" linked="false" uri="studio:/project/demo.c"/>
+  <file name="main.c" linked="false" uri="studio:/project/main.c"/>
+  <file name="wifi_commands.c" linked="false" uri="studio:/project/wifi_commands.c"/>
+  <file name="network_commands.c" linked="false" uri="studio:/project/network_commands.c"/>
+  <file name="bsd_socket_commands.c" linked="false" uri="studio:/project/bsd_socket_commands.c"/>
+  <file name="iot_socket_commands.c" linked="false" uri="studio:/project/iot_socket_commands.c"/>
+  <file name="app.h" linked="false" uri="studio:/project/app.h"/>
+  <file name="readme.md" linked="false" uri="studio:/project/readme.md"/>
   <includePath uri="studio:/project/"/>
   <includePath uri="studio:/project/console_commands/inc"/>
+  <includePath uri="studio:/sdk/extension/wiseconnect/components/device/silabs/si91x/wireless/ble/inc"/>
   <includePath uri="studio:/sdk/extension/wiseconnect/components/service/bsd_socket/si91x_socket"/>
   <includePath uri="studio:/sdk/extension/wiseconnect/components/service/bsd_socket/inc"/>
   <includePath uri="studio:/sdk/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/cmsis_driver/CMSIS/Driver/Include"/>
@@ -653,6 +678,8 @@
   <macroDefinition name="SLI_SI917B0" value="1"/>
   <macroDefinition name="SLI_SI91X_MCU_ENABLE_FLASH_BASED_EXECUTION" value="1"/>
   <macroDefinition name="SLI_SI91X_MCU_EXTERNAL_LDO_FOR_PSRAM" value="1"/>
+  <macroDefinition name="SLI_SI91X_ENABLE_BLE"/>
+  <macroDefinition name="SL_SI91X_ENABLE_LITTLE_ENDIAN"/>
   <macroDefinition name="SLI_SI91X_MCU_COMMON_FLASH_MODE" value="1"/>
   <macroDefinition name="SLI_SI91X_MCU_CONFIG_RADIO_BOARD_BASE_VER" value="1"/>
   <macroDefinition name="SLI_SI91X_MCU_CONFIG_RADIO_BOARD_VER2" value="1"/>

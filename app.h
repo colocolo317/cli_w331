@@ -18,6 +18,11 @@
 #ifndef APP_H
 #define APP_H
 
+
+extern char* AMPAK_CLI_VERSION;
+extern char* VERSION_GOAL;
+extern char* MODIFY_START_DATE;
+
 /***************************************************************************/ /**
  * Initialize application.
  ******************************************************************************/

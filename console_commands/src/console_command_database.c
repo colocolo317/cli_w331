@@ -1290,7 +1290,7 @@ static const console_descriptive_command_t _wifi_transmit_test_start_command = {
 
 extern sl_status_t sl_wifi_ax_transmit_test_start_command_handler(console_args_t *arguments);
 static const char *_wifi_ax_transmit_test_start_arg_help[] = {
-  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 };
 
 static const console_descriptive_command_t _wifi_ax_transmit_test_start_command = {
@@ -1302,7 +1302,7 @@ static const console_descriptive_command_t _wifi_ax_transmit_test_start_command 
                      CONSOLE_ARG_UINT, CONSOLE_ARG_UINT, CONSOLE_ARG_UINT, CONSOLE_ARG_UINT, CONSOLE_ARG_UINT,
                      CONSOLE_ARG_UINT, CONSOLE_ARG_UINT, CONSOLE_ARG_UINT, CONSOLE_ARG_UINT, CONSOLE_ARG_UINT,
                      CONSOLE_ARG_UINT, CONSOLE_ARG_UINT, CONSOLE_ARG_UINT, CONSOLE_ARG_UINT, CONSOLE_ARG_UINT,
-                     CONSOLE_ARG_UINT, CONSOLE_ARG_UINT, CONSOLE_ARG_END }
+                     CONSOLE_ARG_UINT, CONSOLE_ARG_UINT, CONSOLE_ARG_UINT, CONSOLE_ARG_END }
 };
 
 extern sl_status_t sl_wifi_transmit_test_stop_command_handler(console_args_t *arguments);
