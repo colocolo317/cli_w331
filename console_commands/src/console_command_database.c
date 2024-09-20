@@ -1451,6 +1451,41 @@ static const console_descriptive_command_t _ble_stop_advertising_command = {
   .handler       = rsi_ble_stop_advertising_command_handler,
   .argument_list = { CONSOLE_ARG_END }
 };
+extern sl_status_t wifi_per_normal_command_handler(console_args_t* arguments );
+static const char* _wifi_per_normal_command_arg_help[] = {};
+static const console_descriptive_command_t _wifi_per_normal_command = {
+    .description      = "WiFi normal mode throughput test\r\n"
+                        "  usage: wifi_per_normal <wifi_mode> <throughput_type> -c <ap_channel> -a <ip_addr> -t <timeout> -r <region>\r\n"
+                        "  <wifi_mode>: sta_mode = 0, ap_mode = 1\r\n"
+                        "  <throughput_type>: udp_tx = 0, udp_rx = 1, tcp_tx = 2, tcp_rx = 3\r\n"
+                        "  -c <ap_channel> 1~11\r\n"
+                        "  -a <ip_addr>    STA mode server IP address, default 192.168.50.223\r\n"
+                        "  -t <timeout>    Integer for execution time in seconds (e.g. -t 3600 for an hour)\r\n"
+                        "  -r <region> [0: DEFAULT_REGION], [1: US], [2: EU], [3: JP], [4: WORLD_DOMAIN], [5: KR]\r\n"
+                        "  (example 1) wifi_per_normal 0 3 -a 192.168.50.1\r\n"
+                        "  (example 2) wifi_per_normal 1 2 -c 14 -t 3600 -r 3\r\n",
+    .argument_help    = _wifi_per_normal_command_arg_help,
+    .handler          = wifi_per_normal_command_handler,
+    .argument_list    = { CONSOLE_ARG_UINT,
+                          CONSOLE_ARG_UINT,
+                          CONSOLE_OPTIONAL_ARG('c', CONSOLE_ARG_UINT),
+                          CONSOLE_OPTIONAL_ARG('a', CONSOLE_ARG_STRING),
+                          CONSOLE_OPTIONAL_ARG('t', CONSOLE_ARG_UINT),
+                          CONSOLE_OPTIONAL_ARG('r', CONSOLE_ARG_UINT),
+                          CONSOLE_ARG_END
+                        }
+};
+
+extern sl_status_t wifi_per_normal_stop_command_handler(console_args_t* arguments );
+static const char* _wifi_per_normal_stop_command_arg_help[] = {};
+static const console_descriptive_command_t _wifi_per_normal_stop_command = {
+    .description      = "Stop WiFi normal mode throughput test\r\n",
+    .argument_help    = _wifi_per_normal_stop_command_arg_help,
+    .handler          = wifi_per_normal_stop_command_handler,
+    .argument_list    = { CONSOLE_ARG_END }
+};
+
+
 const console_database_t console_command_database = { CONSOLE_DATABASE_ENTRIES(
   { "get", &_get_command },
   { "help", &_help_command },
@@ -1560,4 +1595,6 @@ const console_database_t console_command_database = { CONSOLE_DATABASE_ENTRIES(
   { "ble_set_advertise_data", &_ble_set_advertise_data_command },
   { "ble_start_advertising", &_ble_start_advertising_command },
   { "ble_stop_advertising", &_ble_stop_advertising_command },
+  { "wifi_per_normal", &_wifi_per_normal_command},
+  { "wpn_stop", &_wifi_per_normal_stop_command},
   ) };

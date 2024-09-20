@@ -34,8 +34,8 @@ bool end_of_cmd = false;
 #define OFFSETS(a, b, c, d) uint8_t offsets[] = { 0, sizeof(#a), sizeof(#b), sizeof(#c) }
 
 /// v003 w3.1.4->w3.3.1
-#define AMPAK_CLI_VERSION   "v003.001.243802"
-#define VERSION_GOAL        "BLE command merge"
+#define AMPAK_CLI_VERSION   "v003.001.243803"
+#define VERSION_GOAL        "WiFi per command merge"
 #define MODIFY_START_DATE   "2024.09.20"
 
 /******************************************************
