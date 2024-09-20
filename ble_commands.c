@@ -297,7 +297,7 @@ sl_status_t rsi_ble_per_receive_command_handler(console_args_t *arguments)
   //! start the Receive PER functionality
   status = rsi_ble_per_receive(&rsi_ble_per_rx);
   osDelay(1000);
-  status = amk_bt_per_stats_periodic_new_thread(&trx_run);
+  //status = amk_bt_per_stats_periodic_new_thread(&trx_run);
 
   VERIFY_STATUS_AND_RETURN(status);
   return status;
