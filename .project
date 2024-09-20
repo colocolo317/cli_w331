@@ -986,6 +986,16 @@
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/ahb_interface/src/sli_siwx917_soc.c</locationURI>
 		</link>
 		<link>
+			<name>wiseconnect3_sdk_3.3.1/components/device/silabs/si91x/wireless/asynchronous_socket/inc/sl_si91x_socket.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/asynchronous_socket/inc/sl_si91x_socket.h</locationURI>
+		</link>
+		<link>
+			<name>wiseconnect3_sdk_3.3.1/components/device/silabs/si91x/wireless/asynchronous_socket/src/sl_si91x_socket.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/asynchronous_socket/src/sl_si91x_socket.c</locationURI>
+		</link>
+		<link>
 			<name>wiseconnect3_sdk_3.3.1/components/device/silabs/si91x/wireless/ble/inc/rsi_ble.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/ble/inc/rsi_ble.h</locationURI>

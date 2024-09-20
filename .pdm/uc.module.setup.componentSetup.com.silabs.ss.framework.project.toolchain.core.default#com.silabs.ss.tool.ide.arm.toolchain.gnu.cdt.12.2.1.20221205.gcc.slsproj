@@ -259,6 +259,14 @@
                   <file name="sl_si91x_ble.h" uri="studio:/sdk/extension/wiseconnect/components/device/silabs/si91x/wireless/ble/inc/sl_si91x_ble.h"/>
                 </folder>
               </folder>
+              <folder name="asynchronous_socket">
+                <folder name="src">
+                  <file name="sl_si91x_socket.c" uri="studio:/sdk/extension/wiseconnect/components/device/silabs/si91x/wireless/asynchronous_socket/src/sl_si91x_socket.c"/>
+                </folder>
+                <folder name="inc">
+                  <file name="sl_si91x_socket.h" uri="studio:/sdk/extension/wiseconnect/components/device/silabs/si91x/wireless/asynchronous_socket/inc/sl_si91x_socket.h"/>
+                </folder>
+              </folder>
               <folder name="memory">
                 <file name="malloc_buffers.c" uri="studio:/sdk/extension/wiseconnect/components/device/silabs/si91x/wireless/memory/malloc_buffers.c"/>
               </folder>
@@ -647,6 +655,7 @@
   <includePath uri="studio:/sdk/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc"/>
   <includePath uri="studio:/sdk/extension/wiseconnect/components/device/silabs/si91x/mcu/core/config"/>
   <includePath uri="studio:/sdk/extension/wiseconnect/components/device/silabs/si91x/mcu/core/common/inc"/>
+  <includePath uri="studio:/sdk/extension/wiseconnect/components/device/silabs/si91x/wireless/asynchronous_socket/inc"/>
   <includePath uri="studio:/sdk/extension/wiseconnect/components/device/silabs/si91x/wireless/errno/inc"/>
   <includePath uri="studio:/sdk/extension/wiseconnect/components/device/silabs/si91x/wireless/icmp"/>
   <includePath uri="studio:/sdk/extension/wiseconnect/components/device/silabs/si91x/wireless/firmware_upgrade"/>
