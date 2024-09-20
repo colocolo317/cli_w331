@@ -61,7 +61,10 @@ const char *wifi_band_type[]       = { "2.4g", "5g", "60g", "6g", "900m", "auto"
 const char *wifi_bandwidth_type[]  = { "10m", "160m", "20m", "40m", "80m", NULL };
 const char *wifi_encryption_type[] = { "ccmp", "fast", "open", "peap", "tkip", "tls", "ttls", "wep", NULL };
 const char *wifi_init_mode_type[]  = {
-   "ap", "apsta", "ble_coex", "client", "client_ipv6", "eap", "transmit_test", NULL
+   "ap", "apsta", "ble_coex", "client", "client_ipv6", "eap", "transmit_test", "ble", NULL
+};
+const char *wifi_init_region_type[]  = {
+   "factory_default", "us", "eu", "jp", "world", "kr", "sg", NULL
 };
 const char *wifi_interface_type[] = { "ap", "ap_5g", "client", "client_5g", NULL };
 const char *wifi_security_type[]  = {
@@ -99,6 +102,7 @@ const arg_list_t console_argument_types[] = {
   [CONSOLE_TYPE(wifi_bandwidth)]                  = wifi_bandwidth_type,
   [CONSOLE_TYPE(wifi_encryption)]                 = wifi_encryption_type,
   [CONSOLE_TYPE(wifi_init_mode)]                  = wifi_init_mode_type,
+  [CONSOLE_TYPE(wifi_init_region)]                = wifi_init_region_type,
   [CONSOLE_TYPE(wifi_interface)]                  = wifi_interface_type,
   [CONSOLE_TYPE(wifi_security)]                   = wifi_security_type,
   [CONSOLE_TYPE(wps_mode)]                        = wps_mode_type,
@@ -172,7 +176,14 @@ const value_list_t console_argument_values[] = {
                                                         SL_WIFI_EAP_TLS_ENCRYPTION,
                                                         SL_WIFI_EAP_TTLS_ENCRYPTION,
                                                         SL_WIFI_WEP_ENCRYPTION },
-  [CONSOLE_TYPE(wifi_init_mode)]  = (const uint32_t[]){ 1, 2, 4, 0, 5, 3, 6 },
+  [CONSOLE_TYPE(wifi_init_mode)]  = (const uint32_t[]){ 1, 2, 4, 0, 5, 3, 6, 7 },
+  [CONSOLE_TYPE(wifi_init_region)]= (const uint32_t[]){ DEFAULT_REGION,
+                                                        US,
+                                                        EU,
+                                                        JP,
+                                                        WORLD_DOMAIN,
+                                                        KR,
+                                                        SG },
   [CONSOLE_TYPE(wifi_interface)]  = (const uint32_t[]){ SL_WIFI_AP_2_4GHZ_INTERFACE,
                                                         SL_WIFI_AP_5GHZ_INTERFACE,
                                                         SL_WIFI_CLIENT_2_4GHZ_INTERFACE,

@@ -62,6 +62,7 @@
 
 #define WIFI_MODE_BLE_COEX      4 // BLE Coex mode
 #define WIFI_TRANSMIT_TEST_MODE 6
+#define BLE_MODE 7
 
 #define OPENSSL_SERVER 0
 #define AWS_SERVER     1
@@ -266,6 +267,8 @@ static const sl_wifi_device_configuration_t sl_wifi_transmit_test_configuration_
                    .ble_ext_feature_bit_map    = 0,
                    .config_feature_bit_map     = SL_SI91X_FEAT_SLEEP_GPIO_SEL_BITMAP }
 };
+
+extern const sl_wifi_device_configuration_t sl_wifi_ble_configuration_cli;
 
 sl_wifi_device_configuration_t si91x_init_configuration = {
   .boot_option = LOAD_NWP_FW,
@@ -540,12 +543,20 @@ sl_status_t wifi_init_command_handler(console_args_t *arguments)
     case WIFI_TRANSMIT_TEST_MODE:
       config = sl_wifi_transmit_test_configuration_cli;
       break;
+    case BLE_MODE:
+      config = sl_wifi_ble_configuration_cli;
+      break;
     default:
       printf("Selected Wi-Fi mode is not supported. Try 'help'");
       return SL_STATUS_WIFI_UNKNOWN_INTERFACE;
   }
 
   config.band = GET_OPTIONAL_COMMAND_ARG(arguments, 1, SL_SI91X_WIFI_BAND_2_4GHZ, const int);
+
+  if (IS_CONSOLE_ARG_VALID(arguments, 2)){
+      config.region_code = (sl_si91x_region_code_t) GET_COMMAND_ARG(arguments, 2);
+  }else
+  { config.region_code = (sl_si91x_region_code_t) JP;}
 
   status = sl_wifi_init(&config, NULL, sl_wifi_default_event_handler);
   VERIFY_STATUS_AND_RETURN(status);
@@ -563,8 +574,16 @@ sl_status_t wifi_init_command_handler(console_args_t *arguments)
     case WIFI_MODE_EAP:
       printf("Started enterprise client mode");
       break;
+    case WIFI_TRANSMIT_TEST_MODE:
+      printf("Started Wi-Fi transmit test mode");
+      break;
     case WIFI_MODE_BLE_COEX:
       printf("Started BLE Coex mode");
+      break;
+    case BLE_MODE:
+      printf("Started BLE mode");
+      break;
+    default:
       break;
   }
 
