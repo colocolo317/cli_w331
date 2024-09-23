@@ -69,7 +69,7 @@ osSemaphoreId_t ble_thread_sem;
 #define BLE_TRANSMIT_CMD_ID 0x13
 #define BLE_RECEIVE_CMD_ID  0x14
 
-#define BLE_ACCESS_ADDR    0x71764230
+#define BLE_ACCESS_ADDR    0x71764129
 #define BLE_TX_PKT_LEN     32
 #define BLE_PHY_RATE       LE_ONE_MBPS
 #define BLE_RX_CHNL_NUM    10
@@ -304,7 +304,7 @@ sl_status_t rsi_ble_per_receive_command_handler(console_args_t *arguments)
 }
 
 sl_status_t rsi_bt_per_stats_command_handler(console_args_t *arguments)
-{
+{  
   sl_status_t status   = SL_STATUS_OK;
   status = rsi_bt_per_stats(BT_PER_STATS_CMD_ID, &per_stats);
   VERIFY_STATUS_AND_RETURN(status);
@@ -322,16 +322,31 @@ sl_status_t rsi_bt_per_stats_command_handler(console_args_t *arguments)
       );
       break;
     case ble_per_rx:
+      printf("\r\n{\r\n"
+                  "\t\"crc_fail_cnt\": %u\r\n"
+                  "\t\"crc_pass_cnt\": %u\r\n"
+                  "\t\"tx_dones\": %u\r\n"
+                  "\t\"rssi\": %d\r\n"
+                  "\t\"id_pkts_rcvd\":%u\r\n"
+                  "}\r\n",
+                  per_stats.crc_fail_cnt,
+                  per_stats.crc_pass_cnt,
+                  per_stats.tx_dones,
+                  per_stats.rssi,
+                  per_stats.id_pkts_rcvd);
+#if 0
       fail_rate = 100.0 * per_stats.crc_fail_cnt/(per_stats.crc_fail_cnt + per_stats.crc_pass_cnt);
       total_crc_fail_cnt = total_crc_fail_cnt + per_stats.crc_fail_cnt;
       total_crc_pass_cnt = total_crc_pass_cnt + per_stats.crc_pass_cnt;
       total_per = 100.0 * total_crc_fail_cnt/(total_crc_fail_cnt + total_crc_pass_cnt);
+
       printf(
           "id_pkts_rcvd: %6u crc_fail: %3u crc_pass: %8u faild_rate: %.3f%%\r\n"
           "rssi: %4d [Summary] crc_fail: %3lu crc_pass: %8lu faild_rate: %.3f%%\r\n\r\n",
           per_stats.id_pkts_rcvd, per_stats.crc_fail_cnt, per_stats.crc_pass_cnt, fail_rate,
           per_stats.rssi, total_crc_fail_cnt, total_crc_pass_cnt, total_per
       );
+#endif
       break;
 
     case ble_per_tx_rx:
@@ -356,6 +371,8 @@ sl_status_t rsi_bt_per_stats_command_handler(console_args_t *arguments)
 
       break;
   }
+
+
 
   return status;
 }

@@ -556,7 +556,7 @@ sl_status_t wifi_init_command_handler(console_args_t *arguments)
   if (IS_CONSOLE_ARG_VALID(arguments, 2)){
       config.region_code = (sl_si91x_region_code_t) GET_COMMAND_ARG(arguments, 2);
   }else
-  { config.region_code = (sl_si91x_region_code_t) JP;}
+  { config.region_code = (sl_si91x_region_code_t) WORLD_DOMAIN;}
 
   status = sl_wifi_init(&config, NULL, sl_wifi_default_event_handler);
   VERIFY_STATUS_AND_RETURN(status);

@@ -34,9 +34,9 @@ bool end_of_cmd = false;
 #define OFFSETS(a, b, c, d) uint8_t offsets[] = { 0, sizeof(#a), sizeof(#b), sizeof(#c) }
 
 /// v003 w3.1.4->w3.3.1
-#define AMPAK_CLI_VERSION   "v003.001.243804"
-#define VERSION_GOAL        "BLE RX per log disable"
-#define MODIFY_START_DATE   "2024.09.20"
+#define AMPAK_CLI_VERSION   "v003.001.243901"
+#define VERSION_GOAL        "Power limit"
+#define MODIFY_START_DATE   "2024.09.23"
 
 /******************************************************
  *                   Enumerations

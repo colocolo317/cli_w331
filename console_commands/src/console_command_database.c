@@ -1373,13 +1373,13 @@ static const console_descriptive_command_t _ble_per_receive_command = {
 };
 
 extern sl_status_t rsi_bt_per_stats_command_handler(console_args_t *arguments);
-static const char *_bt_per_stats_arg_help[] = {};
+static const char *_bt_per_stats_arg_help[] = {0};
 
 static const console_descriptive_command_t _bt_per_stats_command = {
   .description   = "Read and clear BLE PER statistics",
   .argument_help = _bt_per_stats_arg_help,
   .handler       = rsi_bt_per_stats_command_handler,
-  .argument_list = { CONSOLE_ARG_END }
+  .argument_list = { CONSOLE_ARG_UINT, CONSOLE_ARG_END }
 };
 
 extern sl_status_t rsi_bt_per_stats_periodic_command_handler(console_args_t *arguments);
