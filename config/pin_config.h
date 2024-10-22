@@ -25,8 +25,8 @@
 // $[SSI_SLAVE]
 // [SSI_SLAVE]$
 
-// $[ULP_SPI]
-// [ULP_SPI]$
+// $[ULP_SSI]
+// [ULP_SSI]$
 
 // $[GSPI_MASTER]
 // [GSPI_MASTER]$
@@ -127,9 +127,18 @@
 // $[DAC1]
 // [DAC1]$
 
+// $[SYSRTC]
+// [SYSRTC]$
+
+// $[UULP_VBAT_GPIO]
+// [UULP_VBAT_GPIO]$
+
+// $[GPIO]
+// [GPIO]$
+
 // $[CUSTOM_PIN_NAME]
 #ifndef _PORT                                   
-#define _PORT                                    0
+#define _PORT                                    HP
 #endif
 #ifndef _PIN                                    
 #define _PIN                                     6

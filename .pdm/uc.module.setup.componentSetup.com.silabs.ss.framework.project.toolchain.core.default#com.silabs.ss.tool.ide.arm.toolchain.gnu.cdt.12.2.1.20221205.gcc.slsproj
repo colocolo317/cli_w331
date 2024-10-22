@@ -40,7 +40,7 @@
       <file name="picture6.png" linked="false" uri="studio:/project/resources/readme/picture6.png"/>
     </folder>
   </folder>
-  <folder name="wiseconnect3_sdk_3.3.1">
+  <folder name="wiseconnect3_sdk_3.3.3">
     <folder name="components">
       <folder name="device">
         <folder name="silabs">
@@ -505,7 +505,7 @@
       </folder>
     </folder>
   </folder>
-  <folder name="simplicity_sdk_2024.6.1">
+  <folder name="simplicity_sdk_2024.6.2">
     <folder name="platform">
       <folder name="common">
         <folder name="inc">

@@ -34,9 +34,10 @@ bool end_of_cmd = false;
 #define OFFSETS(a, b, c, d) uint8_t offsets[] = { 0, sizeof(#a), sizeof(#b), sizeof(#c) }
 
 /// v003 w3.1.4->w3.3.1
-#define AMPAK_CLI_VERSION   "v003.001.243901"
-#define VERSION_GOAL        "Power limit"
-#define MODIFY_START_DATE   "2024.09.23"
+/// v004 w3.3.1->w3.3.3
+#define AMPAK_CLI_VERSION   "v004.001.244301"
+#define VERSION_GOAL        "Upgrade wifi sdk 3.3.3"
+#define MODIFY_START_DATE   "2024.10.22"
 
 /******************************************************
  *                   Enumerations
