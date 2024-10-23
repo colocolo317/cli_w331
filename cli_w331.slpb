@@ -4,6 +4,8 @@ parameters:
 constants:
 - name: "project_name"
   value: "cli_w331"
+- name: "artifact_name"
+  value: "cli_w333"
 steps:
 - task: "create_rps"
   output: "{{build_dir}}/{{project_name}}.rps"
@@ -17,5 +19,5 @@ steps:
   output: "{{build_dir}}/{{project_name}}.s37"
   input: "{{build_dir}}/{{project_name}}.rps"
 - task: "convert"
-  output: "{{build_dir}}/{{project_name}}_isp.bin"
+  output: "{{build_dir}}/{{artifact_name}}_isp.bin"
   input: "{{build_dir}}/{{project_name}}.rps"
