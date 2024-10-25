@@ -22,6 +22,9 @@
 #include "sl_utility.h"
 #include <stdbool.h>
 #include <string.h>
+
+#include "rsi_rom_egpio.h"
+
 /******************************************************
  *                    Constants
  ******************************************************/
@@ -35,9 +38,9 @@ bool end_of_cmd = false;
 
 /// v003 w3.1.4->w3.3.1
 /// v004 w3.3.1->w3.3.3
-#define AMPAK_CLI_VERSION   "v004.001.244301"
-#define VERSION_GOAL        "Upgrade wifi sdk 3.3.3"
-#define MODIFY_START_DATE   "2024.10.22"
+#define AMPAK_CLI_VERSION   "v004.001.244303"
+#define VERSION_GOAL        "GPIO radiation remove config(GPIO 34 pull high)"
+#define MODIFY_START_DATE   "2024.10.25"
 
 /******************************************************
  *                   Enumerations
@@ -88,6 +91,56 @@ const osThreadAttr_t thread_attributes = {
   .tz_module  = 0,
   .reserved   = 0,
 };
+void gpio_init(){
+  RSI_EGPIO_PadSelectionEnable(2);//7
+  RSI_EGPIO_SetPinMux(EGPIO, 0, 7, 0);
+  RSI_EGPIO_SetDir(EGPIO, 0, 7, 0);
+  RSI_EGPIO_SetPin(EGPIO, 0, 7, 0);
+
+  ROMAPI_EGPIO_API->egpio_host_pads_gpio_mode_enable(30);//30
+  RSI_EGPIO_SetPinMux(EGPIO, 0, 30, 0);
+  RSI_EGPIO_SetDir(EGPIO, 0, 30, 0);
+  RSI_EGPIO_SetPin(EGPIO, 0, 30, 0);
+
+  RSI_EGPIO_PadSelectionEnable(9);//31-34
+  RSI_EGPIO_SetPinMux(EGPIO, 0, 31, 0);
+  RSI_EGPIO_SetDir(EGPIO, 0, 31, 0);
+  RSI_EGPIO_SetPin(EGPIO, 0, 31, 0);
+
+  RSI_EGPIO_SetPinMux(EGPIO, 0, 32, 0);//32
+  RSI_EGPIO_SetDir(EGPIO, 0, 32, 0);
+  RSI_EGPIO_SetPin(EGPIO, 0, 32, 0);
+
+  RSI_EGPIO_SetPinMux(EGPIO, 0, 33, 0);//33
+  RSI_EGPIO_SetDir(EGPIO, 0, 33, 0);
+  RSI_EGPIO_SetPin(EGPIO, 0, 33, 0);
+#if 1
+  /* NOTE Configure GPIO_34 only if ISP provision is there on the H/W to reprogram/upgrafe 917 M4 firmware using SWD */
+  RSI_EGPIO_SetPinMux(EGPIO, 0, 34, 0);//34
+  RSI_EGPIO_SetDir(EGPIO, 0, 34, 0);
+  RSI_EGPIO_SetPin(EGPIO, 0, 34, 0);
+#endif
+  RSI_EGPIO_PadSelectionEnable(19);//55
+  RSI_EGPIO_SetPinMux(EGPIO, 0, 55, 0);
+  RSI_EGPIO_SetDir(EGPIO, 0, 55, 0);
+  RSI_EGPIO_SetPin(EGPIO, 0, 55, 0);
+
+  RSI_EGPIO_SetPinMux(EGPIO1, 0, 8, 0);//ULP8
+  RSI_EGPIO_SetDir(EGPIO1, 0, 8, 0);
+  RSI_EGPIO_SetPin(EGPIO1, 0, 8, 0);
+
+  RSI_EGPIO_SetPinMux(EGPIO1, 0, 10, 0);//ULP10
+  RSI_EGPIO_SetDir(EGPIO1, 0, 10, 0);
+  RSI_EGPIO_SetPin(EGPIO1, 0, 10, 0);
+
+  RSI_NPSSGPIO_SetPinMux(0, 0); //UULP0
+  RSI_NPSSGPIO_SetDir(0, 0);
+  RSI_NPSSGPIO_SetPin(0,0);
+
+  RSI_NPSSGPIO_SetPinMux(1, 0); //UULP1
+  RSI_NPSSGPIO_SetDir(1, 0);
+  RSI_NPSSGPIO_SetPin(1, 0);
+}
 
 void app_init(const void *unused)
 {
@@ -139,6 +192,8 @@ void application_start(const void *unused)
   printf("\r\n\r\n=== AMPAK CLI version: %s ===\r\n", AMPAK_CLI_VERSION);
 
   printf("Ready\r\n");
+  gpio_init();
+  printf("gpio_init done\r\n");
 
   console_line_ready = 0;
 
