@@ -38,8 +38,8 @@ bool end_of_cmd = false;
 
 /// v003 w3.1.4->w3.3.1
 /// v004 w3.3.1->w3.3.3
-#define AMPAK_CLI_VERSION   "v004.001.244303"
-#define VERSION_GOAL        "GPIO radiation remove config(GPIO 34 pull high)"
+#define AMPAK_CLI_VERSION   "v004.001.244304"
+#define VERSION_GOAL        "GPIO all pull low for reduce radiation"
 #define MODIFY_START_DATE   "2024.10.25"
 
 /******************************************************
@@ -91,55 +91,45 @@ const osThreadAttr_t thread_attributes = {
   .tz_module  = 0,
   .reserved   = 0,
 };
-void gpio_init(){
-  RSI_EGPIO_PadSelectionEnable(2);//7
-  RSI_EGPIO_SetPinMux(EGPIO, 0, 7, 0);
-  RSI_EGPIO_SetDir(EGPIO, 0, 7, 0);
-  RSI_EGPIO_SetPin(EGPIO, 0, 7, 0);
 
-  ROMAPI_EGPIO_API->egpio_host_pads_gpio_mode_enable(30);//30
-  RSI_EGPIO_SetPinMux(EGPIO, 0, 30, 0);
-  RSI_EGPIO_SetDir(EGPIO, 0, 30, 0);
-  RSI_EGPIO_SetPin(EGPIO, 0, 30, 0);
 
-  RSI_EGPIO_PadSelectionEnable(9);//31-34
-  RSI_EGPIO_SetPinMux(EGPIO, 0, 31, 0);
-  RSI_EGPIO_SetDir(EGPIO, 0, 31, 0);
-  RSI_EGPIO_SetPin(EGPIO, 0, 31, 0);
+void gpio_init()
+{
+  uint8_t hp_arr[] = {6,7,8,9,10,11,12,15,25,26,27,28,29,30,31,32,33,34,46,47,48,49,50,51,52,53,54,55,56,57};
+  uint8_t ulp_arr[] = {1,2,3,6,7,8,10};
+  uint8_t i=0;
 
-  RSI_EGPIO_SetPinMux(EGPIO, 0, 32, 0);//32
-  RSI_EGPIO_SetDir(EGPIO, 0, 32, 0);
-  RSI_EGPIO_SetPin(EGPIO, 0, 32, 0);
-
-  RSI_EGPIO_SetPinMux(EGPIO, 0, 33, 0);//33
-  RSI_EGPIO_SetDir(EGPIO, 0, 33, 0);
-  RSI_EGPIO_SetPin(EGPIO, 0, 33, 0);
-#if 1
+  /* HP */
+  for(i=1;i<=21;i++)
+  {
+    RSI_EGPIO_PadSelectionEnable(i);
+  }
+  for(i=25;i<=30;i++)
+  {
+    ROMAPI_EGPIO_API->egpio_host_pads_gpio_mode_enable(i);
+  }
   /* NOTE Configure GPIO_34 only if ISP provision is there on the H/W to reprogram/upgrafe 917 M4 firmware using SWD */
-  RSI_EGPIO_SetPinMux(EGPIO, 0, 34, 0);//34
-  RSI_EGPIO_SetDir(EGPIO, 0, 34, 0);
-  RSI_EGPIO_SetPin(EGPIO, 0, 34, 0);
-#endif
-  RSI_EGPIO_PadSelectionEnable(19);//55
-  RSI_EGPIO_SetPinMux(EGPIO, 0, 55, 0);
-  RSI_EGPIO_SetDir(EGPIO, 0, 55, 0);
-  RSI_EGPIO_SetPin(EGPIO, 0, 55, 0);
-
-  RSI_EGPIO_SetPinMux(EGPIO1, 0, 8, 0);//ULP8
-  RSI_EGPIO_SetDir(EGPIO1, 0, 8, 0);
-  RSI_EGPIO_SetPin(EGPIO1, 0, 8, 0);
-
-  RSI_EGPIO_SetPinMux(EGPIO1, 0, 10, 0);//ULP10
-  RSI_EGPIO_SetDir(EGPIO1, 0, 10, 0);
-  RSI_EGPIO_SetPin(EGPIO1, 0, 10, 0);
-
-  RSI_NPSSGPIO_SetPinMux(0, 0); //UULP0
-  RSI_NPSSGPIO_SetDir(0, 0);
-  RSI_NPSSGPIO_SetPin(0,0);
-
-  RSI_NPSSGPIO_SetPinMux(1, 0); //UULP1
-  RSI_NPSSGPIO_SetDir(1, 0);
-  RSI_NPSSGPIO_SetPin(1, 0);
+  for(i=0;i<30;i++)
+  {
+    RSI_EGPIO_SetPinMux(EGPIO, 0, hp_arr[i], 0);
+    RSI_EGPIO_SetDir(EGPIO, 0, hp_arr[i], 0);
+    RSI_EGPIO_SetPin(EGPIO, 0, hp_arr[i], 0);
+  }
+  /* ULP */
+  /* shipping 0/4/5 which are used for antenna selection and 9/11 used for UART */
+  for(i=0;i<7;i++)
+  {
+    RSI_EGPIO_SetPinMux(EGPIO1, 0, ulp_arr[i], 0);//ULP8
+    RSI_EGPIO_SetDir(EGPIO1, 0, ulp_arr[i], 0);
+    RSI_EGPIO_SetPin(EGPIO1, 0, ulp_arr[i], 0);
+  }
+  /* UULP */
+  for(i=0;i<=3;i++)
+  {
+    RSI_NPSSGPIO_SetPinMux(i, 0); //UULP0
+    RSI_NPSSGPIO_SetDir(i, 0);
+    RSI_NPSSGPIO_SetPin(i,0);
+  }
 }
 
 void app_init(const void *unused)
