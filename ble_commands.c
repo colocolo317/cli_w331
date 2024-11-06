@@ -69,7 +69,7 @@ osSemaphoreId_t ble_thread_sem;
 #define BLE_TRANSMIT_CMD_ID 0x13
 #define BLE_RECEIVE_CMD_ID  0x14
 
-#define BLE_ACCESS_ADDR    0x71764129
+#define BLE_ACCESS_ADDR    0x71764230
 #define BLE_TX_PKT_LEN     32
 #define BLE_PHY_RATE       LE_ONE_MBPS
 #define BLE_RX_CHNL_NUM    10
@@ -107,11 +107,13 @@ typedef enum amk_ble_per_trx
   ble_per_tx_rx,
   ble_per_tx,
   ble_per_rx,
+  ble_per_rx_periodic,
 } amk_ble_per_trx_t;
 
 typedef struct stats_periodic_args
 {
   uint8_t trx_type;
+  uint8_t direct_command;
 }stats_periodic_args_t;
 
 #if 1
@@ -202,7 +204,7 @@ const osThreadAttr_t ble_stats_periodic_thread_attr = {
   .reserved   = 0,
 };
 
-static stats_periodic_args_t trx_run = {ble_per_tx_rx};
+static stats_periodic_args_t trx_run = { .trx_type = ble_per_tx_rx , .direct_command = 0};
 static volatile uint8_t amk_ble_stats_periodic = 0;
 static rsi_ble_per_transmit_t rsi_ble_per_tx;
 static rsi_ble_per_receive_t rsi_ble_per_rx;
@@ -228,11 +230,13 @@ sl_status_t rsi_ble_per_transmit_command_handler(console_args_t *arguments)
   {
     amk_ble_stats_periodic = 0;
     trx_run.trx_type = ble_per_tx_rx;
+    trx_run.direct_command = 0;
   }
   else
   {
     amk_ble_stats_periodic = 1;
     trx_run.trx_type = ble_per_tx;
+    trx_run.direct_command = 0;
   }
 
   *(uint32_t *)&rsi_ble_per_tx.access_addr[0] = BLE_ACCESS_ADDR;
@@ -271,11 +275,13 @@ sl_status_t rsi_ble_per_receive_command_handler(console_args_t *arguments)
   {
     amk_ble_stats_periodic = 0;
     trx_run.trx_type = ble_per_tx_rx;
+    trx_run.direct_command = 0;
   }
   else
   {
     amk_ble_stats_periodic = 1;
     trx_run.trx_type = ble_per_rx;
+    trx_run.direct_command = 0;
   }
 
   *(uint32_t *)&rsi_ble_per_rx.access_addr[0] = BLE_ACCESS_ADDR;
@@ -305,10 +311,13 @@ sl_status_t rsi_ble_per_receive_command_handler(console_args_t *arguments)
 
 sl_status_t rsi_bt_per_stats_command_handler(console_args_t *arguments)
 {  
+  //printf("bitmap: 0x%lX\r\n",arguments->bitmap);
+  //printf("arg0: 0x%lX, arg1: 0x%lX\r\n", arguments->arg[0], arguments->arg[1]);
   sl_status_t status   = SL_STATUS_OK;
   status = rsi_bt_per_stats(BT_PER_STATS_CMD_ID, &per_stats);
   VERIFY_STATUS_AND_RETURN(status);
   float fail_rate;
+  uint8_t direct_cmd = GET_OPTIONAL_COMMAND_ARG(arguments, 1, 0, const uint8_t);;
 
   switch(arguments->arg[0])
   {
@@ -322,31 +331,34 @@ sl_status_t rsi_bt_per_stats_command_handler(console_args_t *arguments)
       );
       break;
     case ble_per_rx:
-      printf("\r\n{\r\n"
-                  "\t\"crc_fail_cnt\": %u\r\n"
-                  "\t\"crc_pass_cnt\": %u\r\n"
-                  "\t\"tx_dones\": %u\r\n"
-                  "\t\"rssi\": %d\r\n"
-                  "\t\"id_pkts_rcvd\":%u\r\n"
-                  "}\r\n",
-                  per_stats.crc_fail_cnt,
-                  per_stats.crc_pass_cnt,
-                  per_stats.tx_dones,
-                  per_stats.rssi,
-                  per_stats.id_pkts_rcvd);
-#if 0
-      fail_rate = 100.0 * per_stats.crc_fail_cnt/(per_stats.crc_fail_cnt + per_stats.crc_pass_cnt);
-      total_crc_fail_cnt = total_crc_fail_cnt + per_stats.crc_fail_cnt;
-      total_crc_pass_cnt = total_crc_pass_cnt + per_stats.crc_pass_cnt;
-      total_per = 100.0 * total_crc_fail_cnt/(total_crc_fail_cnt + total_crc_pass_cnt);
+      if(direct_cmd == 0)
+      {
+        printf("\r\n{\r\n"
+            "\t\"crc_fail_cnt\": %u\r\n"
+            "\t\"crc_pass_cnt\": %u\r\n"
+            "\t\"tx_dones\": %u\r\n"
+            "\t\"rssi\": %d\r\n"
+            "\t\"id_pkts_rcvd\":%u\r\n"
+            "}\r\n",
+            per_stats.crc_fail_cnt,
+            per_stats.crc_pass_cnt,
+            per_stats.tx_dones,
+            per_stats.rssi,
+            per_stats.id_pkts_rcvd);
+      }else
+      {
+        fail_rate = 100.0 * per_stats.crc_fail_cnt/(per_stats.crc_fail_cnt + per_stats.crc_pass_cnt);
+        total_crc_fail_cnt = total_crc_fail_cnt + per_stats.crc_fail_cnt;
+        total_crc_pass_cnt = total_crc_pass_cnt + per_stats.crc_pass_cnt;
+        total_per = 100.0 * total_crc_fail_cnt/(total_crc_fail_cnt + total_crc_pass_cnt);
 
-      printf(
-          "id_pkts_rcvd: %6u crc_fail: %3u crc_pass: %8u faild_rate: %.3f%%\r\n"
-          "rssi: %4d [Summary] crc_fail: %3lu crc_pass: %8lu faild_rate: %.3f%%\r\n\r\n",
-          per_stats.id_pkts_rcvd, per_stats.crc_fail_cnt, per_stats.crc_pass_cnt, fail_rate,
-          per_stats.rssi, total_crc_fail_cnt, total_crc_pass_cnt, total_per
-      );
-#endif
+        printf(
+            "id_pkts_rcvd: %6u crc_fail: %3u crc_pass: %8u faild_rate: %.3f%%\r\n"
+            "rssi: %4d [Summary] crc_fail: %3lu crc_pass: %8lu faild_rate: %.3f%%\r\n\r\n",
+            per_stats.id_pkts_rcvd, per_stats.crc_fail_cnt, per_stats.crc_pass_cnt, fail_rate,
+            per_stats.rssi, total_crc_fail_cnt, total_crc_pass_cnt, total_per
+        );
+      }
       break;
 
     case ble_per_tx_rx:
@@ -381,7 +393,10 @@ void amk_ble_stats_print(void* args)
 {
   static console_args_t console_arg = {0};
   stats_periodic_args_t trx_run = *(stats_periodic_args_t*) args;
+  console_arg.bitmap = (uint32_t)0x3;
   console_arg.arg[0] = trx_run.trx_type;
+  console_arg.arg[1] = 1;
+
   do
   {
     rsi_bt_per_stats_command_handler(&console_arg);
@@ -391,7 +406,7 @@ void amk_ble_stats_print(void* args)
   osThreadExit();
 }
 
-sl_status_t amk_bt_per_stats_periodic_new_thread(void* args)
+sl_status_t amk_bt_per_stats_periodic_new_thread(void *args)
 {
   if(osThreadNew( amk_ble_stats_print, args, &ble_stats_periodic_thread_attr) != NULL)
   { return SL_STATUS_OK; }

@@ -38,9 +38,9 @@ bool end_of_cmd = false;
 
 /// v003 w3.1.4->w3.3.1
 /// v004 w3.3.1->w3.3.3
-#define AMPAK_CLI_VERSION   "v004.001.244304"
-#define VERSION_GOAL        "GPIO all pull low for reduce radiation"
-#define MODIFY_START_DATE   "2024.10.25"
+#define AMPAK_CLI_VERSION   "v004.001.244503"
+#define VERSION_GOAL        "BLE per log modify"
+#define MODIFY_START_DATE   "2024.11.05"
 
 /******************************************************
  *                   Enumerations
