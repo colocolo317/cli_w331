@@ -901,7 +901,7 @@
 //     <o> UART1_TX <0=>P0_3 <1=>P0_7 <2=>P0_11
 //     <i> TX of ULPSS UART
 #ifndef ULP_UART_TX_LOC
-#define RTE_ULP_UART_TX_PORT_ID 1
+#define RTE_ULP_UART_TX_PORT_ID 0
 #if (RTE_ULP_UART_TX_PORT_ID == 0)
 #define RTE_ULP_UART_TX_PORT 0
 #define RTE_ULP_UART_TX_PIN  7

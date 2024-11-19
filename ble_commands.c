@@ -121,7 +121,7 @@ const sl_wifi_device_configuration_t sl_wifi_ble_configuration_cli = {
     .boot_option = LOAD_NWP_FW,
     .mac_address = NULL,
     .band        = SL_SI91X_WIFI_BAND_2_4GHZ,
-    .region_code = US,
+    .region_code = WORLD_DOMAIN,
     .boot_config = { .oper_mode = SL_SI91X_CLIENT_MODE,
                      .coex_mode = SL_SI91X_BLE_MODE,
 #ifdef SLI_SI91X_MCU_INTERFACE

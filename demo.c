@@ -38,9 +38,11 @@ bool end_of_cmd = false;
 
 /// v003 w3.1.4->w3.3.1
 /// v004 w3.3.1->w3.3.3
-#define AMPAK_CLI_VERSION   "v004.001.244503"
-#define VERSION_GOAL        "BLE per log modify"
-#define MODIFY_START_DATE   "2024.11.05"
+/// v005 w3.3.3->w3.3.4
+#define AMPAK_CLI_VERSION   "v004.001.244702"
+#define VERSION_GOAL        "UART TX to ULP GPIO 7"
+#define MODIFY_START_DATE   "2024.11.19"
+#define SILABS_WIFI_SDK_VERSION "3.3.3"
 
 /******************************************************
  *                   Enumerations
@@ -96,7 +98,7 @@ const osThreadAttr_t thread_attributes = {
 void gpio_init()
 {
   uint8_t hp_arr[] = {6,7,8,9,10,11,12,15,25,26,27,28,29,30,31,32,33,34,46,47,48,49,50,51,52,53,54,55,56,57};
-  uint8_t ulp_arr[] = {1,2,3,6,7,8,10};
+  uint8_t ulp_arr[] = {1,2,3,6,8,10,11};
   uint8_t i=0;
 
   /* HP */
@@ -180,6 +182,7 @@ void application_start(const void *unused)
   sl_status_t result;
 
   printf("\r\n\r\n=== AMPAK CLI version: %s ===\r\n", AMPAK_CLI_VERSION);
+  printf("=== M4 FW WiFi SDK version: %s ===\r\n", SILABS_WIFI_SDK_VERSION);
 
   printf("Ready\r\n");
   gpio_init();
